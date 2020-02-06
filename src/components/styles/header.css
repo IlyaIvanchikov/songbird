@@ -41,3 +41,7 @@ ul {
 li {
   margin: 10px 0;
 }
+
+.navRow {
+  margin-bottom: 0;
+}
