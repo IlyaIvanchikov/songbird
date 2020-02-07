@@ -5,17 +5,22 @@ import Answers from "./Answers";
 import Description from "./Description";
 import  './styles/app.css';
 import Info from './info/training.json';
+
 class App extends Component {
   constructor(props) {
-    
     super(props);
     this.state = {
       count: 0,
-      active: true,
       sound: Info.sound,
+      typeBirds: Info.TypeBirds,
+      clrBtn: 0
     };
   }
  
+  handleClick(e) {
+    this.setState({ clrBtn: this.state.clrBtn  + 1});
+  };
+
   render() {
     return (
         <div className="container">
@@ -25,7 +30,7 @@ class App extends Component {
                 <Answers/>
                 <Description/>
                 <div className="col s12">
-                <button className="button">Next level</button>
+                <button className="button" onClick={e => this.handleClick()}>Next level</button>
                 </div>
             </div>
         </div>

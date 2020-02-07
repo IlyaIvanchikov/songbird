@@ -5,6 +5,18 @@ import img from "../public/logo.svg";
 class Header extends Component {
 
   render() {
+      const typeBirds = this.props.typeBirds;
+      const clrBtn = this.props.clrBtn;
+
+      const users = typeBirds.map((item, index) => (
+        <li key={index} className="col s6 m4 l2" style={{backgroundColor: "#008966"}}><a href="/#">{item}</a></li>
+      ));
+      users.map((el, index) => {
+        console.log(users[0].props.style.backgroundColor);
+        if (index === this.props.clrBtn) {
+          el.props.style.backgroundColor = 'green';
+        }
+      });
     return (<div className="main">
     <div className="row" > 
                 <div className="col s6">
@@ -17,12 +29,7 @@ class Header extends Component {
                   <div className="row navRow">
                     <div className="navtest" >
                       <ul className="navUl">
-                        <li className="col s6 m4 l2"><a href="/#">Разминка</a></li>
-                        <li className="col s6 m4 l2"><a href="/#">Воробьиные</a></li>
-                        <li className="col s6 m4 l2"><a href="/#">Лесные птицы</a></li>
-                        <li className="col s6 m4 l2"><a href="/#">Певчие птицы</a></li>
-                        <li className="col s6 m4 l2"><a href="/#">Хищные птицы</a></li>
-                        <li className="col s6 m4 l2 active"><a href="/#">Морские птицы</a></li>
+                      {users}
                       </ul>
                     </div>
                     </div>

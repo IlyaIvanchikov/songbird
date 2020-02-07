@@ -1,3 +1,7 @@
 body {
   background-color: #222;
 }
+
+.container {
+  width: 90%;
+}
