@@ -12,7 +12,6 @@ class Header extends Component {
         <li key={index} className="col s6 m4 l2" style={{backgroundColor: "#008966"}}><a href="/#">{item}</a></li>
       ));
       users.map((el, index) => {
-        console.log(users[0].props.style.backgroundColor);
         if (index === this.props.clrBtn) {
           el.props.style.backgroundColor = 'green';
         }

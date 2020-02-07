@@ -9,17 +9,26 @@ import Info from './info/training.json';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.handleDesc = this.handleDesc.bind(this);
     this.state = {
       count: 0,
       sound: Info.sound,
       typeBirds: Info.TypeBirds,
-      clrBtn: 0
+      variableBirds: Info.VariableBirds,
+      clrBtn: 0,
+      test: 0
     };
   }
  
   handleClick(e) {
-    this.setState({ clrBtn: this.state.clrBtn  + 1});
+    this.setState({ clrBtn: this.state.clrBtn + 1});
   };
+
+  handleDesc(e) {
+    this.setState({
+      test: e
+    });
+  }
 
   render() {
     return (
@@ -27,8 +36,8 @@ class App extends Component {
             <div className="row">
                 <Header {...this.state} className="col s12"/>
                 <Question  {...this.state} className="col s12"/>
-                <Answers/>
-                <Description/>
+                <Answers {...this.state} desc={this.handleDesc}/>
+                <Description desc1={this.state.test}/>
                 <div className="col s12">
                 <button className="button" onClick={e => this.handleClick()}>Next level</button>
                 </div>
