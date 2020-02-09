@@ -12,8 +12,7 @@ class Description extends Component {
     //              </p>
     //         </div>
     //         )
-    console.log(this.props.desc1);
-    if (this.props.desc1 === "1") {
+    if (this.props.oneBird === "1") {
       return (
        <p>Hello</p>
       )
