@@ -10,6 +10,7 @@ class Question extends Component {
     const oneBird = this.props.oneBird;
     const sound = this.props.sound;
     const clrBtn = this.props.clrBtn;
+    
     let image = this.props.image;
     let rand = this.props.rand;
     let resultImg;

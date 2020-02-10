@@ -11,6 +11,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.handleDesc = this.handleDesc.bind(this);
+    this.handleRed = this.handleRed.bind(this);
+    this.handleGreen = this.handleGreen.bind(this);
     this.state = {
       count: 0,
       sound: Info.Sound,
@@ -18,19 +20,22 @@ class App extends Component {
       clrBtn: 0,
       variableBirds: Info.VariableBirds,
       description: 0,
-      rand: Math.floor(0 + Math.random() * (3 + 3 - 0)),
+      rand: Math.round(0 - 0.5 + Math.random() * (4 - 0 + 1)),
       image: Info.Image,
       clrTag: null,
-
+      arrRed: [],
+      arrGreen: [],
     };
   }
  
   handleClick(e) {
-    console.log(this.state.clrTag);
     this.setState({
        clrBtn: this.state.clrBtn + 1,
-       rand: Math.floor(0 + Math.random() * (3 + 3 - 0)),
-       clrTag: null
+       rand: Math.round(0 - 0.5 + Math.random() * (4 - 0 + 1)),
+       clrTag: null,
+       description: null,
+       arrRed: [],
+       arrGreen: []
       });
   };
 
@@ -38,9 +43,22 @@ class App extends Component {
     console.log(e);
     this.setState({
       description: e,
-      clrTag: e
+      clrTag: e,
     });
   }
+
+  handleRed(e) {
+    this.setState({
+      arrRed: this.state.arrRed.concat(e)
+    });
+  }
+
+  handleGreen(e) {
+    this.setState({
+      arrGreen: this.state.arrGreen.concat(e)
+    });
+  }
+
   render() {
     return (
         <div className="container">
@@ -63,9 +81,12 @@ class App extends Component {
                 <Answers 
                 variableBirds= {this.state.variableBirds} 
                 descAnswer={this.handleDesc} 
+                redBtn={this.handleRed}
+                greenBtn={this.handleGreen}
                 clrBtn={this.state.clrBtn}
-                clrTag={this.state.clrTag}
                 rand={this.state.rand}
+                arrRed={this.state.arrRed}
+                arrGreen={this.state.arrGreen}
                 />
                 <Description 
                 oneBird={this.state.description}

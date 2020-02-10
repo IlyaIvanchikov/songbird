@@ -5,35 +5,54 @@ class Answers extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.handleGreen = this.handleGreen.bind(this);
+    this.handleRed = this.handleRed.bind(this);
     // this.state = {
-    //   test : this.props.clrTag
+    //   arrClrRed: this.props.checkArr,
+    //   arrClrGreen: this.props.checkArr
     // }
   }
 
   handleClick(e) {
     e.preventDefault();
     this.props.descAnswer(e.target.id);
-    this.props.clrTag(e.target.id);
-    // this.setState({
-    //   test: e.target.id
-    //  });
+  };
+
+  handleRed(e) {
+    e.preventDefault();
+    if (e.target.id != this.props.rand) {
+      this.props.redBtn(e.target.id);
+    }
+  };
+
+  handleGreen(e) {
+    e.preventDefault();
+    if (e.target.id == this.props.rand) {
+      this.props.greenBtn(e.target.id);
+    }
   };
 
   render() {
+ 
     const variableBirds = this.props.variableBirds;
-    const rand = this.props.rand;
-    console.log(this.props.clrTag);
-    const answerTag = variableBirds[this.props.clrBtn].map((item, index) => (
-      <a href="#!" className="collection-item" id={index} key={index} style={{backgroundColor: "#008966"}} onClick={this.handleClick}>{item}</a>
+    const clrBtn = this.props.clrBtn;
+
+    const answerTag = variableBirds[clrBtn].map((item, index) => (
+      <a href="#!" className="collection-item" id={index} key={index} style={{backgroundColor: "#008966"}} onClick={this.handleClick}  onClick={this.handleGreen}>{item}</a>
     ));
-      //console.log(this.props.clrTag);
-      if (this.props.clrTag == rand) {
-        answerTag[rand].props.style.backgroundColor = 'green';
-      }
-      else if (this.props.clrTag != null &&  this.props.clrTag != rand) {
-        answerTag[this.props.clrTag].props.style.backgroundColor = 'red';
-      }
-   
+
+    this.props.arrRed.map((item, index) => {
+      answerTag[item].props.style.backgroundColor = 'red';
+    })
+
+    // //this.props.checkGreen.map((item, index) => {
+    //   console.log(this.props.arrGreen);
+      this.props.arrGreen.map((item, index) => {
+        answerTag[item].props.style.backgroundColor = 'green';
+      })
+
+    //})
+ 
     return (
             <div className="col s12 l6 m6">
                   <div className="collection">
