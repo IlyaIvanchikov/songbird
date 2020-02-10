@@ -20,19 +20,19 @@ class Question extends Component {
         return resultImg =  (<img src={img} className="imgBird" />);
       }
       else if (oneBird === '0' && oneBird == rand) {
-        return resultImg =  (<img src={image[clrBtn][rand]} className="imgBird" />);
+        return resultImg =  (<img src={image[clrBtn][oneBird]} className="imgBird" />);
       }
       else if (oneBird === '1' && oneBird == rand) {
-        return resultImg =  (<img src={image[clrBtn][rand]} className="imgBird" />);
+        return resultImg =  (<img src={image[clrBtn][oneBird]} className="imgBird" />);
       }
       else if (oneBird === '2' && oneBird == rand) {
-        return resultImg =  (<img src={image[clrBtn][rand]} className="imgBird" />);
+        return resultImg =  (<img src={image[clrBtn][oneBird]} className="imgBird" />);
       }
       else if (oneBird === '3' && oneBird == rand) {
-        return resultImg =  (<img src={image[clrBtn][rand]} className="imgBird" />);
+        return resultImg =  (<img src={image[clrBtn][oneBird]} className="imgBird" />);
       }
       else if (oneBird === '4' && oneBird == rand) {
-        return resultImg =  (<img src={image[clrBtn][rand]} className="imgBird" />);
+        return resultImg =  (<img src={image[clrBtn][oneBird]} className="imgBird" />);
       }
       else {
         return resultImg =  (<img src={img} className="imgBird" />);
@@ -44,19 +44,19 @@ class Question extends Component {
         return resultName =  (<h3 className="questionH3">****</h3>);
       }
       else if (oneBird === '0' && oneBird == rand) {
-        return resultName =  (<h3 className="questionH3">{variableBirds[clrBtn][rand]}</h3>);
+        return resultName =  (<h3 className="questionH3">{variableBirds[clrBtn][oneBird]}</h3>);
       }
       else if (oneBird === '1' && oneBird == rand) {
-        return resultName =  (<h3 className="questionH3">{variableBirds[clrBtn][rand]}</h3>);
+        return resultName =  (<h3 className="questionH3">{variableBirds[clrBtn][oneBird]}</h3>);
       }
       else if (oneBird === '2' && oneBird == rand) {
-        return resultName =  (<h3 className="questionH3">{variableBirds[clrBtn][rand]}</h3>);
+        return resultName =  (<h3 className="questionH3">{variableBirds[clrBtn][oneBird]}</h3>);
       }
       else if (oneBird === '3' && oneBird == rand) {
-        return resultName =  (<h3 className="questionH3">{variableBirds[clrBtn][rand]}</h3>);
+        return resultName =  (<h3 className="questionH3">{variableBirds[clrBtn][oneBird]}</h3>);
       }
       else if (oneBird === '4' && oneBird == rand) {
-        return resultName =  (<h3 className="questionH3">{variableBirds[clrBtn][rand]}</h3>);
+        return resultName =  (<h3 className="questionH3">{variableBirds[clrBtn][oneBird]}</h3>);
       }
       else {
         return resultName =  (<h3 className="questionH3">****</h3>);

@@ -11,8 +11,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.handleDesc = this.handleDesc.bind(this);
-    this.handleRed = this.handleRed.bind(this);
-    this.handleGreen = this.handleGreen.bind(this);
     this.state = {
       count: 0,
       sound: Info.Sound,
@@ -40,26 +38,36 @@ class App extends Component {
   };
 
   handleDesc(e) {
-    console.log(e);
-    this.setState({
-      description: e,
-      clrTag: e,
-    });
+    if (this.state.rand == e) {
+      this.setState({
+        description: e,
+        clrTag: e,
+        arrGreen: this.state.arrGreen.concat(e)
+      });
+    }
+    else if (this.state.rand != e) {
+      this.setState({
+        clrTag: e,
+        arrRed: this.state.arrRed.concat(e)
+      });
+    }
   }
-
-  handleRed(e) {
-    this.setState({
-      arrRed: this.state.arrRed.concat(e)
-    });
-  }
-
-  handleGreen(e) {
-    this.setState({
-      arrGreen: this.state.arrGreen.concat(e)
-    });
-  }
-
   render() {
+    let clrMainBtn;
+    if (this.state.rand == this.state.description) {
+      clrMainBtn = <button className="button"  style={{backgroundColor: "green"}} onClick={e => this.handleClick()}>Next level</button>;
+    }
+    else {
+      clrMainBtn = <button className="button"  disabled style={{backgroundColor: "red"}} onClick={e => this.handleClick()}>Next level</button>;
+    }
+     // if (this.state.rand == this.state.description ) {
+         
+    //   }
+    //   else {
+    //     return <button className="button" disabled style={{backgroundColor: "red"}} onClick={e => this.handleClick()}>Next level</button>
+    //   }
+    // );
+    //clrMainBtn();
     return (
         <div className="container">
             <div className="row">
@@ -81,8 +89,6 @@ class App extends Component {
                 <Answers 
                 variableBirds= {this.state.variableBirds} 
                 descAnswer={this.handleDesc} 
-                redBtn={this.handleRed}
-                greenBtn={this.handleGreen}
                 clrBtn={this.state.clrBtn}
                 rand={this.state.rand}
                 arrRed={this.state.arrRed}
@@ -92,7 +98,7 @@ class App extends Component {
                 oneBird={this.state.description}
                 />
                 <div className="col s12">
-                <button className="button" onClick={e => this.handleClick()}>Next level</button>
+                {clrMainBtn}
                 </div>
             </div>
         </div>
