@@ -11,6 +11,8 @@ import publicInfo from './info/publicInfo.json';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.correctAudioPlayer = React.createRef();
+    this.wrongAudioPlayer = React.createRef();
     this.handleDesc = this.handleDesc.bind(this);
     this.state = {
       score: 0,
@@ -24,7 +26,8 @@ class App extends Component {
       image: Info.Image,
       arrRed: [],
       arrGreen: [],
-      ringtons: publicInfo.Ringtons
+      ringtons: publicInfo.Ringtons,
+      curId: null
     };
   }
  
@@ -36,30 +39,32 @@ class App extends Component {
        arrRed: [],
        arrGreen: [],
        count: 4,
-       ringtons: publicInfo.Ringtons
+       curId: null
       });
   };
 
   handleDesc(e) {
     if (this.state.rand == e && this.state.arrGreen.length == 0) {
+      this.correctAudioPlayer.current.play();
       this.setState({
         description: e,
         arrGreen: this.state.arrGreen.concat(e),
         score: this.state.count + this.state.score
       });
     }
-    else if (this.state.rand != e && !this.state.arrRed.includes(e)) {
+    else if (this.state.rand != e && !this.state.arrRed.includes(e) && this.state.arrGreen.length == 0) {
+      this.wrongAudioPlayer.current.currentTime = 0;
+      this.wrongAudioPlayer.current.play();
       this.setState({
         arrRed: this.state.arrRed.concat(e),
-        count: this.state.count - 1
+        count: this.state.count - 1,
+        curId: e,
       });
     }
   }
   render() {
-
     let finish;
     let clrMainBtn;
-    let ringtons;
     if (this.state.rand == this.state.description) {
       clrMainBtn = <button className="button"  style={{backgroundColor: "green"}} onClick={e => this.handleClick()}>Next level</button>;
     }
@@ -67,13 +72,7 @@ class App extends Component {
       clrMainBtn = <button className="button"  disabled style={{backgroundColor: "red"}} onClick={e => this.handleClick()}>Next level</button>;
     }
 
-    if (this.state.rand == this.state.description) {
-      ringtons = <audio src={this.state.ringtons[0]} autoPlay></audio>;
-    }
-    else if (this.state.rand != this.state.description && this.state.description != null){
-      ringtons = <audio src={this.state.ringtons[1]} autoPlay></audio>;
-    }
-    console.log(ringtons);
+
       if (this.state.clrBtn === 6) {
       return finish =  (
         <div className="row">
@@ -119,7 +118,8 @@ class App extends Component {
         />
         <div className="col s12">
         {clrMainBtn}
-        {ringtons}
+        <audio src={this.state.ringtons[0]} ref={this.correctAudioPlayer}/> 
+        <audio src={this.state.ringtons[1]} ref={this.wrongAudioPlayer} />
         </div>
     </div>
        );
