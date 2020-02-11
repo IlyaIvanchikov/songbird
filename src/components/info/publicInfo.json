@@ -6,5 +6,10 @@
         "Ястребиные",
         "Соколиные",
         "Совы"
+    ],
+
+    "Ringtons": [
+       "http://ahandfulof.me/fail/signal.mp3",
+       "http://ahandfulof.me/fail/taxi-4.mp3"
     ]
 }

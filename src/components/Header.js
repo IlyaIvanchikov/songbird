@@ -22,7 +22,7 @@ class Header extends Component {
                     <img src={img} className="imgHeader" />
                 </div>
                 <div className="col s6 right-align" >
-                  <h5 className="h5" >Score: <span>{this.props.count}</span></h5>
+                  <h5 className="h5" >Score: <span>{this.props.score}</span></h5>
                 </div>
                 <div className="col s12">
                   <div className="row navRow">

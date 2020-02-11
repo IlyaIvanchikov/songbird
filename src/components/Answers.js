@@ -18,8 +18,6 @@ class Answers extends Component {
     const variableBirds = this.props.variableBirds;
     const clrBtn = this.props.clrBtn;
     const arrRed = this.props.arrRed;
-    // const rand = this.props.rand;
-    // const lnArr = arrRed.length;
 
     const answerTag = variableBirds[clrBtn].map((item, index) => (
       <a href="#!" className="collection-item" id={index} key={index} style={{backgroundColor: "#008966"}} onClick={this.handleClick}>{item}</a>

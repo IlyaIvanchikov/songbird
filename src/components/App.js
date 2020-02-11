@@ -3,6 +3,7 @@ import Header from "./Header";
 import Question from "./Question";
 import Answers from "./Answers";
 import Description from "./Description";
+import FinishFrame from "./FinishFrame";
 import  './styles/app.css';
 
 import Info from './info/InfoBirds.json';
@@ -12,17 +13,18 @@ class App extends Component {
     super(props);
     this.handleDesc = this.handleDesc.bind(this);
     this.state = {
-      count: 0,
+      score: 0,
+      count: 4,
       sound: Info.Sound,
       typeBirds: publicInfo.TypeBirds,
       clrBtn: 0,
       variableBirds: Info.VariableBirds,
-      description: 0,
+      description: null,
       rand: Math.round(0 - 0.5 + Math.random() * (4 - 0 + 1)),
       image: Info.Image,
-      clrTag: null,
       arrRed: [],
       arrGreen: [],
+      ringtons: publicInfo.Ringtons
     };
   }
  
@@ -30,79 +32,103 @@ class App extends Component {
     this.setState({
        clrBtn: this.state.clrBtn + 1,
        rand: Math.round(0 - 0.5 + Math.random() * (4 - 0 + 1)),
-       clrTag: null,
        description: null,
        arrRed: [],
-       arrGreen: []
+       arrGreen: [],
+       count: 4,
+       ringtons: publicInfo.Ringtons
       });
   };
 
   handleDesc(e) {
-    if (this.state.rand == e) {
+    if (this.state.rand == e && this.state.arrGreen.length == 0) {
       this.setState({
         description: e,
-        clrTag: e,
-        arrGreen: this.state.arrGreen.concat(e)
+        arrGreen: this.state.arrGreen.concat(e),
+        score: this.state.count + this.state.score
       });
     }
-    else if (this.state.rand != e) {
+    else if (this.state.rand != e && !this.state.arrRed.includes(e)) {
       this.setState({
-        clrTag: e,
-        arrRed: this.state.arrRed.concat(e)
+        arrRed: this.state.arrRed.concat(e),
+        count: this.state.count - 1
       });
     }
   }
   render() {
+
+    let finish;
     let clrMainBtn;
+    let ringtons;
     if (this.state.rand == this.state.description) {
       clrMainBtn = <button className="button"  style={{backgroundColor: "green"}} onClick={e => this.handleClick()}>Next level</button>;
     }
     else {
       clrMainBtn = <button className="button"  disabled style={{backgroundColor: "red"}} onClick={e => this.handleClick()}>Next level</button>;
     }
-     // if (this.state.rand == this.state.description ) {
-         
-    //   }
-    //   else {
-    //     return <button className="button" disabled style={{backgroundColor: "red"}} onClick={e => this.handleClick()}>Next level</button>
-    //   }
-    // );
-    //clrMainBtn();
+
+    if (this.state.rand == this.state.description) {
+      ringtons = <audio src={this.state.ringtons[0]} autoPlay></audio>;
+    }
+    else if (this.state.rand != this.state.description && this.state.description != null){
+      ringtons = <audio src={this.state.ringtons[1]} autoPlay></audio>;
+    }
+    console.log(ringtons);
+      if (this.state.clrBtn === 6) {
+      return finish =  (
+        <div className="row">
+        <Header 
+        score={this.state.score} 
+        typeBirds={this.state.typeBirds} 
+        clrBtn={this.state.clrBtn} 
+        className="col s12"
+        />
+        <FinishFrame 
+        score={this.state.score} 
+        />
+        </div>
+      );
+     }
+      return finish =  (
+        <div className="row">
+        <Header 
+        score={this.state.score} 
+        typeBirds={this.state.typeBirds} 
+        clrBtn={this.state.clrBtn} 
+        className="col s12"
+        />
+        <Question  
+        sound={this.state.sound} 
+        clrBtn={this.state.clrBtn} 
+        oneBird={this.state.description} 
+        image={this.state.image}
+        rand={this.state.rand}
+        variableBirds= {this.state.variableBirds} 
+        className="col s12"
+        />
+        <Answers 
+        variableBirds= {this.state.variableBirds} 
+        descAnswer={this.handleDesc} 
+        clrBtn={this.state.clrBtn}
+        rand={this.state.rand}
+        arrRed={this.state.arrRed}
+        arrGreen={this.state.arrGreen}
+        />
+        <Description 
+        oneBird={this.state.description}
+        />
+        <div className="col s12">
+        {clrMainBtn}
+        {ringtons}
+        </div>
+    </div>
+       );
+    
     return (
         <div className="container">
-            <div className="row">
-                <Header 
-                count={this.state.count} 
-                typeBirds={this.state.typeBirds} 
-                clrBtn={this.state.clrBtn} 
-                className="col s12"
-                />
-                <Question  
-                sound={this.state.sound} 
-                clrBtn={this.state.clrBtn} 
-                oneBird={this.state.description} 
-                image={this.state.image}
-                rand={this.state.rand}
-                variableBirds= {this.state.variableBirds} 
-                className="col s12"
-                />
-                <Answers 
-                variableBirds= {this.state.variableBirds} 
-                descAnswer={this.handleDesc} 
-                clrBtn={this.state.clrBtn}
-                rand={this.state.rand}
-                arrRed={this.state.arrRed}
-                arrGreen={this.state.arrGreen}
-                />
-                <Description 
-                oneBird={this.state.description}
-                />
-                <div className="col s12">
-                {clrMainBtn}
-                </div>
-            </div>
+          {finish}
         </div>
-            )
+    )
   }
 }
 export default App;
