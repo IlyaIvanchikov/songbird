@@ -1,13 +1,6 @@
-.answers {
-    padding: 1rem;
-    margin-bottom: 25px;
-    border-radius: 0.3rem;
-    border: 1px solid #444;
-  }
-
 .collection .collection-item {
- background-color: #303030;
- border-bottom: 1px solid #444;
+  background-color: #303030;
+  border-bottom: 1px solid #444;
 }
 
 .collection {

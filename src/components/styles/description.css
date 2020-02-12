@@ -1,13 +1,18 @@
-.description {
+.descriptionP {
     display: inline-grid;
     color:white;
 }
 
-.test {
-    width: 100%;
+#descriptionRow {
     background-color: #303030;
-    padding: 1rem;
-    border: 1px solid #444;
-    margin: .5rem 0 1rem 0;
+    min-height: 28vh;
     border-radius: 0.3rem;
+    margin: .5rem 0 1rem 0;
+    color: white;
 }
+
+.imgBird {
+    width: 200px;
+    height: 155px;
+    border-radius: 10px;
+  }

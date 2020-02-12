@@ -19,6 +19,8 @@ class App extends Component {
       count: 4,
       sound: Info.Sound,
       typeBirds: publicInfo.TypeBirds,
+      lat: Info.Lat,
+      infoBirds: Info.InfoBirds,
       clrBtn: 0,
       variableBirds: Info.VariableBirds,
       description: null,
@@ -27,7 +29,8 @@ class App extends Component {
       arrRed: [],
       arrGreen: [],
       ringtons: publicInfo.Ringtons,
-      curId: null
+      curId: null,
+      curAnswerImg: null
     };
   }
  
@@ -39,17 +42,20 @@ class App extends Component {
        arrRed: [],
        arrGreen: [],
        count: 4,
-       curId: null
+       curId: null,
+       curAnswerImg: null
       });
   };
 
   handleDesc(e) {
     if (this.state.rand == e && this.state.arrGreen.length == 0) {
+      this.correctAudioPlayer.current.currentTime = 0;
       this.correctAudioPlayer.current.play();
       this.setState({
         description: e,
         arrGreen: this.state.arrGreen.concat(e),
-        score: this.state.count + this.state.score
+        score: this.state.count + this.state.score,
+        curAnswerImg: e 
       });
     }
     else if (this.state.rand != e && !this.state.arrRed.includes(e) && this.state.arrGreen.length == 0) {
@@ -59,6 +65,12 @@ class App extends Component {
         arrRed: this.state.arrRed.concat(e),
         count: this.state.count - 1,
         curId: e,
+        curAnswerImg: e 
+      });
+    }
+    else {
+      this.setState({
+        curAnswerImg: e 
       });
     }
   }
@@ -115,6 +127,12 @@ class App extends Component {
         />
         <Description 
         oneBird={this.state.description}
+        image={this.state.image}
+        clrBtn={this.state.clrBtn}
+        curAnswerImg={this.state.curAnswerImg}
+        variableBirds={this.state.variableBirds}
+        lat={this.state.lat}
+        infoBirds={this.state.infoBirds}
         />
         <div className="col s12">
         {clrMainBtn}

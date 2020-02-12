@@ -18,7 +18,7 @@ class FinishFrame extends Component {
         <h1 className="fFh1">Поздравляем!</h1>
         <p className="fFp">Вы прошли викторину и набрали  {this.props.score} из 24 возможных баллов</p>
         <hr/>
-        <a className="waves-effect waves-light btn fFBtn" href="/">Попробуйте еще раз!</a>
+        <a className="waves-effect waves-light btn fFBtn" href="/">Пройти еще разок!</a>
         </div>
         )
     return (
