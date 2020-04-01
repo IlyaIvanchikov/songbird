@@ -1,0 +1,15 @@
+{
+    "TypeBirds": [
+        "Фазановые",
+        "Пастушковые",
+        "Утиные",
+        "Ястребиные",
+        "Соколиные",
+        "Совы"
+    ],
+
+    "Ringtons": [
+       "https://zvukipro.com/uploads/files/2018-10/1540308869_jg-032316-sfx-elearning-correct-answer-sound-1.mp3",
+       "https://zvukipro.com/uploads/files/2018-10/1540308965_jg-032316-sfx-elearning-incorrect-answer-sound-3.mp3"
+    ]
+}

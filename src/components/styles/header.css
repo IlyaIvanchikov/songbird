@@ -1,0 +1,48 @@
+.imgHeader {
+    width: 200px;
+    height: 55px;
+  }
+
+.main {
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+
+.h5 {
+  color: white;
+}
+
+.navQuastion {
+  background-color: #008966;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 25px;
+  text-align: center;
+  height: 2rem;
+}
+
+.navtest {
+  background-color: #008966;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 25px;
+  text-align: center;
+  line-height: 2;
+  font-size: 1.5rem;
+}
+
+li, a {
+  color:white;
+}
+
+ul {
+  margin-top: 0;
+}
+
+li {
+  margin: 10px 0;
+}
+
+.navRow {
+  margin-bottom: 0;
+}
